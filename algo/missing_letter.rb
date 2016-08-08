@@ -4,6 +4,25 @@
 
 def find_missing_letter(range)
 
+  missing_letters = []
+  range_arr = range.split(//)
+  compare = (range_arr[0]..range_arr[-1]).to_a
+
+  until range_arr == compare
+    index = 0
+    compare.each do |char|
+      if char != range_arr[index]
+        range_arr.insert(index,char)
+        missing_letters << char
+        break
+      end
+    index += 1
+    end
+  end
+
+  return missing_letters.join if missing_letters.any?
+  return nil
+
 end
 
 # Driver code - don't touch anything below this line.
